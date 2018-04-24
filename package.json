@@ -1,25 +1,15 @@
 {
-  "name": "byteballcore",
-  "description": "Byteball Core",
-  "author": "Byteball",
-  "version": "0.2.88",
-  "keywords": [
-    "byteball",
-    "multisignature"
-  ],
-  "homepage": "https://github.com/byteball/byteballcore",
-  "license": "MIT",
-  "repository": {
-    "url": "git://github.com/byteball/byteballcore.git",
-    "type": "git"
-  },
-  "bugs": {
-    "url": "https://github.com/byteball/byteballcore/issues"
+  "author": {
+    "name": "Byteball"
   },
   "browser": {
     "request": "browser-request",
     "secp256k1": "secp256k1/js"
   },
+  "bugs": {
+    "url": "https://github.com/byteball/byteballcore/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "async": "^1.5.2",
     "bitcore-mnemonic": "~1.0.0",
@@ -33,11 +23,25 @@
     "thirty-two": "^1.0.1",
     "ws": "^1.0.1"
   },
-  "scripts": {
-    "test": "yarn ava"
-  },
+  "deprecated": false,
+  "description": "Byteball Core",
   "devDependencies": {
     "ava": "^0.22.0",
     "testcheck": "^1.0.0-rc.2"
-  }
+  },
+  "homepage": "https://github.com/byteball/byteballcore",
+  "keywords": [
+    "byteball",
+    "multisignature"
+  ],
+  "license": "MIT",
+  "name": "byteballcore",
+  "repository": {
+    "url": "git://github.com/byteball/byteballcore.git",
+    "type": "git"
+  },
+  "scripts": {
+    "test": "yarn ava"
+  },
+  "version": "0.2.88"
 }
