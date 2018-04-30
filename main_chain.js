@@ -538,7 +538,7 @@ function updateMainChain(conn, from_unit, last_added_unit, onDone){
 	}
 	
 	
-	console.log("\nwill update MC");
+	console.log("will update MC");
 	
 	/*if (from_unit === null && arrRetreatingUnits.indexOf(last_added_unit) >= 0){
 		conn.query("UPDATE units SET is_on_main_chain=1, main_chain_index=NULL WHERE unit=?", [last_added_unit], function(){

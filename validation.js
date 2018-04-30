@@ -49,7 +49,7 @@ function validate(objJoint, callbacks) {
 	if (!objUnit.unit)
 		throw Error("no unit");
 	
-	console.log("\nvalidating joint identified by unit "+objJoint.unit.unit);
+	console.log("validating joint identified by unit "+objJoint.unit.unit);
 	
 	if (!isStringOfLength(objUnit.unit, constants.HASH_LENGTH))
 		return callbacks.ifJointError("wrong unit length");

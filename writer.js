@@ -18,7 +18,7 @@ var count_units_in_prev_analyze = 0;
 
 function saveJoint(objJoint, objValidationState, preCommitCallback, onDone) {
 	var objUnit = objJoint.unit;
-	console.log("\nsaving unit "+objUnit.unit);
+	console.log("saving unit "+objUnit.unit);
 	profiler.start();
 	
 	db.takeConnectionFromPool(function(conn){

@@ -34,16 +34,18 @@ function release(arrKeys){
 	}
 }
 
+function flat(arrKeys) { return "[ "+arrKeys.join(", ")+" ]"; }
+
 function exec(arrKeys, proc, next_proc){
 	arrLockedKeyArrays.push(arrKeys);
-	console.log("lock acquired", arrKeys);
+	console.log("lock acquired", flat(arrKeys));
 	var bLocked = true;
 	proc(function(){
 		if (!bLocked)
 			throw Error("double unlock?");
 		bLocked = false;
 		release(arrKeys);
-		console.log("lock released", arrKeys);
+		console.log("lock released", flat(arrKeys));
 		if (next_proc)
 			next_proc.apply(next_proc, arguments);
 		handleQueue();
@@ -57,7 +59,7 @@ function handleQueue(){
 		if (isAnyOfKeysLocked(job.arrKeys))
 			continue;
 		arrQueuedJobs.splice(i, 1); // do it before exec as exec can trigger another job added, another lock unlocked, another handleQueue called
-		console.log("starting job held by keys", job.arrKeys);
+		console.log("starting job held by keys", flat(job.arrKeys));
 		exec(job.arrKeys, job.proc, job.next_proc);
 		i--; // we've just removed one item
 	}
@@ -66,7 +68,7 @@ function handleQueue(){
 
 function lock(arrKeys, proc, next_proc){
 	if (isAnyOfKeysLocked(arrKeys)){
-		console.log("queuing job held by keys", arrKeys);
+		console.log("queuing job held by keys", flat(arrKeys));
 		arrQueuedJobs.push({arrKeys: arrKeys, proc: proc, next_proc: next_proc, ts:Date.now()});
 	}
 	else
@@ -75,7 +77,7 @@ function lock(arrKeys, proc, next_proc){
 
 function lockOrSkip(arrKeys, proc, next_proc){
 	if (isAnyOfKeysLocked(arrKeys)){
-		console.log("skipping job held by keys", arrKeys);
+		console.log("skipping job held by keys", flat(arrKeys));
 		if (next_proc)
 			next_proc();
 	}
